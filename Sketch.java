@@ -13,6 +13,14 @@ public class Sketch extends PApplet {
    int intMoveX;
    int intMoveY;
 
+   private int ColourRandom() {
+    int Colour;
+
+    Colour =(int)random(255);
+
+    return Colour;
+   }
+
   public void settings() {
 	// put your size call here
     size(400, 400);
@@ -20,8 +28,8 @@ public class Sketch extends PApplet {
     intPosX = width / 2;
     intPosY = height / 2;
 
-    intMoveX = (int)random(-5, 5);
-    intMoveY = (int)random(-5, 5);
+    intMoveX = (int)random(2, 4);
+    intMoveY = (int)random(2, 4);
 
   }
 
@@ -45,8 +53,20 @@ public class Sketch extends PApplet {
     intPosX = intPosX + intMoveX;
     intPosY = intPosY + intMoveY;
 
+    // X axis
     if (intPosX - 10 <= 0) {
-      intMoveX = random(1, 5);
+      intMoveX = (int) random(2, 4);
+    }
+    if (intPosX + 10 >= width) {
+      intMoveX = (int) random(-2, -4);
+    }
+
+    // Y axis
+    if (intPosY - 10 <= 0) {
+      intMoveY = (int) random(2, 4);
+    }
+    if (intPosY + 10 >= width) {
+      intMoveY = (int) random(-2, -4);
     }
 
   }

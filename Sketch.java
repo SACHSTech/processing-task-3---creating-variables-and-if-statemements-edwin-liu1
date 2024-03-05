@@ -7,18 +7,33 @@ public class Sketch extends PApplet {
    * Called once at the beginning of execution, put your size all in this method
    */
 
+   // variables
    int intScreenSize;
+
+   // ball position variables
    int intPosX;
    int intPosY;
    int intMoveX;
    int intMoveY;
 
-   private int ColourRandom() {
-    int Colour;
+   // ball colour variables
+   int BallColour;
+   int RandColour;
 
-    Colour =(int)random(255);
+   // time variables
+   int sec;
+   int min;
 
-    return Colour;
+   /**
+    * colour changing method
+    *
+    * @return RandColour a randomized colour
+    */
+   private int RandomColour() {
+
+    RandColour = color( (int) random(255), (int) random(255), (int) random(255) );
+
+    return RandColour;
    }
 
   public void settings() {
@@ -30,6 +45,9 @@ public class Sketch extends PApplet {
 
     intMoveX = (int)random(2, 4);
     intMoveY = (int)random(2, 4);
+
+    RandomColour();
+    BallColour = RandColour;
 
   }
 
@@ -47,27 +65,45 @@ public class Sketch extends PApplet {
 
   public void draw() {
     background(255);
-    fill(0);
+    fill(BallColour);
 	  ellipse( intPosX, intPosY, 10, 10);
-
+    
+    // movement calculations
     intPosX = intPosX + intMoveX;
     intPosY = intPosY + intMoveY;
 
+    // time teller
+    sec = second();
+    min = minute();
+
     // X axis
-    if (intPosX - 10 <= 0) {
+
+    // left of the window
+    if (intPosX - 5 <= 0) {
       intMoveX = (int) random(2, 4);
+      RandomColour();
     }
-    if (intPosX + 10 >= width) {
+    // right of the window
+    if (intPosX + 5 >= width) {
       intMoveX = (int) random(-2, -4);
+      RandomColour();
     }
 
     // Y axis
-    if (intPosY - 10 <= 0) {
+
+    // top of the window
+    if (intPosY - 5 <= 0) {
       intMoveY = (int) random(2, 4);
+      RandomColour();
     }
-    if (intPosY + 10 >= width) {
+    // bottom of the window
+    if (intPosY + 5 >= width) {
       intMoveY = (int) random(-2, -4);
+      RandomColour();
     }
+
+    // for the colour change
+    BallColour = RandColour;
 
   }
 

@@ -23,6 +23,7 @@ public class Sketch extends PApplet {
    // time variables
    int sec;
    int min;
+   int hour;
 
    /**
     * colour changing method
@@ -66,25 +67,23 @@ public class Sketch extends PApplet {
   public void draw() {
     background(255);
     fill(BallColour);
-	  ellipse( intPosX, intPosY, 10, 10);
+    stroke(0);
+    strokeWeight(2);
+	  ellipse( intPosX, intPosY, 20, 20);
     
     // movement calculations
     intPosX = intPosX + intMoveX;
     intPosY = intPosY + intMoveY;
 
-    // time teller
-    sec = second();
-    min = minute();
-
     // X axis
 
     // left of the window
-    if (intPosX - 5 <= 0) {
+    if (intPosX - 10 <= 0) {
       intMoveX = (int) random(2, 4);
       RandomColour();
     }
     // right of the window
-    if (intPosX + 5 >= width) {
+    if (intPosX + 10 >= width) {
       intMoveX = (int) random(-2, -4);
       RandomColour();
     }
@@ -92,18 +91,38 @@ public class Sketch extends PApplet {
     // Y axis
 
     // top of the window
-    if (intPosY - 5 <= 0) {
+    if (intPosY - 10 <= 0) {
       intMoveY = (int) random(2, 4);
       RandomColour();
     }
     // bottom of the window
-    if (intPosY + 5 >= width) {
+    if (intPosY + 10 >= width) {
       intMoveY = (int) random(-2, -4);
       RandomColour();
     }
 
     // for the colour change
     BallColour = RandColour;
+
+    // time teller
+    sec = second();
+    min = minute();
+    hour = hour();
+
+    // clock
+
+    // hours hand
+    stroke(0);
+    strokeWeight(5);
+    line (width / 2 , height / 2 , (int) (Math.cos( (hour * 30 + min / 2)* 3.14f / 180 - 3.14f / 2) * 60 + (width / 2) ), (int) (Math.sin( (hour * 30 + min / 2)* 3.14f / 180 - 3.14f / 2) * 60 + (height / 2) ) ); 
+    //minutes hand
+    stroke(100);
+    strokeWeight(3);
+    line (width / 2 , height / 2 , (int) (Math.cos(min * 3.14f / 30 - 3.14f / 2) * 120 + (width / 2) ), (int) (Math.sin(min * 3.14f / 30 - 3.14f / 2) * 120 + (height/ 2) ) );
+    // seconds hand
+    stroke(255, 100, 100);
+    strokeWeight(2);
+    line (width / 2 , height / 2 , (int) (Math.cos(sec * 3.14f / 30 - 3.14f / 2) * 120 + (width / 2) ), (int) (Math.sin(sec * 3.14f / 30 - 3.14f / 2) * 120 + (height/ 2) ) );
 
   }
 

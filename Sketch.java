@@ -8,7 +8,6 @@ public class Sketch extends PApplet {
    */
 
    // variables
-   int intScreenSize;
 
    // ball position variables
    int intPosX;
@@ -39,7 +38,7 @@ public class Sketch extends PApplet {
 
   public void settings() {
 	// put your size call here
-    size(600, 600);
+    size(800, 400);
 
     intPosX = width / 2;
     intPosY = height / 2;
@@ -96,7 +95,7 @@ public class Sketch extends PApplet {
       RandomColour();
     }
     // bottom of the window
-    if (intPosY + 10 >= width) {
+    if (intPosY + 10 >= height) {
       intMoveY = (int) random(-2, -4);
       RandomColour();
     }

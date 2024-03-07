@@ -39,7 +39,7 @@ public class Sketch extends PApplet {
 
   public void settings() {
 	// put your size call here
-    size(400, 400);
+    size(600, 600);
 
     intPosX = width / 2;
     intPosY = height / 2;
@@ -116,7 +116,7 @@ public class Sketch extends PApplet {
     strokeWeight(5);
     line (width / 2 , height / 2 , (int) (Math.cos( (hour * 30 + min / 2)* 3.14f / 180 - 3.14f / 2) * 60 + (width / 2) ), (int) (Math.sin( (hour * 30 + min / 2)* 3.14f / 180 - 3.14f / 2) * 60 + (height / 2) ) ); 
     //minutes hand
-    stroke(100);
+    stroke(0);
     strokeWeight(3);
     line (width / 2 , height / 2 , (int) (Math.cos(min * 3.14f / 30 - 3.14f / 2) * 120 + (width / 2) ), (int) (Math.sin(min * 3.14f / 30 - 3.14f / 2) * 120 + (height/ 2) ) );
     // seconds hand
